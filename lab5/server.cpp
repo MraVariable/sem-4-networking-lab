@@ -7,9 +7,19 @@
 #include <string.h>
 #define PORT 8080
 using namespace std;
+
+int server_fd,new_socket;
+
+void signalCallback(int signum) {
+   cout << "Closing server " << signum << endl;
+   close(new_socket);
+   exit(signum);
+}
+
 int main(int argc, char const *argv[])
 {
-    int server_fd, new_socket, valread;
+    int i=0;
+    int valread;
     struct sockaddr_in address;
     int opt = 1;
     int addrlen = sizeof(address);
@@ -38,6 +48,7 @@ int main(int argc, char const *argv[])
     }
     while(true)
     {
+        signal(SIGINT, signalCallback);
         if ((new_socket = accept(server_fd, (struct sockaddr *)&address,
                            (socklen_t*)&addrlen))<0)
         {
@@ -67,5 +78,5 @@ int main(int argc, char const *argv[])
         else
         {close(new_socket);}
     }
-    return 0;
+    return EXIT_SUCCESS;
 }
