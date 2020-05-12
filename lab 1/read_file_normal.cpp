@@ -28,7 +28,7 @@ int main()
     }
     cout<<"\nDestination mac:";
     for(int i=0;i<macd.size();i++){printf("%X ",macd[i]);}
-    cout<<"\nDestination mac:";
+    cout<<"\nSource mac:";
     for(int i=0;i<macs.size();i++){printf("%X ",macs[i]);}
     cout<<"\nIP Checksum:";
     for(int i=0;i<ipcs.size();i++){printf("%X ",ipcs[i]);}
