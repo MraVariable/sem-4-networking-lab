@@ -32,7 +32,7 @@ int main()
     cout<<"DATAWORD:"<<dataword;
     /*dataword[1]='1';*//////////////////uncomment this line to insert one bit error and see if error is detected or not
     cur=dataword.substr(0,gen.length());
-    cur=divide(dataword,gen);
+    cur=divide(cur,gen);
     for(int i=gen.length();i<dataword.length();i++)
     {
         cur+=dataword[i];
