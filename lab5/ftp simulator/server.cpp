@@ -49,6 +49,10 @@ int main(int argc, char const *argv[])
         perror("listen");
         exit(EXIT_FAILURE);
     }
+    else
+    {
+        cout<<"\nRUNNING\n";
+    }
     if ((new_socket = accept(server_fd, (struct sockaddr *)&address,
                        (socklen_t*)&addrlen))<0)
     {
@@ -69,7 +73,10 @@ int main(int argc, char const *argv[])
         {
             char file[2000];
             valread=read(new_socket,file,2000);
-            cout<<file<<endl;
+            ofstream ofobj("server.txt");
+            ofobj<<file;
+            ofobj.close();
+            cout<<file<<endl<<"Saved as server.txt\n";
         }
 
         if(buffer[0]=='g' && buffer[1]=='e' && buffer[2]=='t')

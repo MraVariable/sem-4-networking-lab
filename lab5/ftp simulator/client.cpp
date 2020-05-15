@@ -56,7 +56,10 @@ int main(int argc, char const *argv[])
             send(sock,filename,strlen(filename),0);
             char result[2000];
             valread = read( sock , result, 2000);
-            cout<<result<<endl;
+            ofstream ofobj("client.txt");
+            ofobj<<result;
+            ofobj.close();
+            cout<<result<<endl<<"saved as client.txt\n";
         }
 
         if(cmd[0]=='p' && cmd[1]=='u' && cmd[2]=='t')
